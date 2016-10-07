@@ -24,7 +24,7 @@ class IndexController
     public function saveAction(Request $request, Application $app)
     {
         $parameters = $request->request->all();
-        if ($parameters['id']) {
+        if (isset($parameters['id'])) {
             $user = $app['repository.user']->update($parameters);
         } else {
             $user = $app['repository.user']->insert($parameters);
