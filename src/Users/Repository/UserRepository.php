@@ -36,7 +36,7 @@ class UserRepository
        $statement = $queryBuilder->execute();
        $usersData = $statement->fetchAll();
        foreach ($usersData as $userData) {
-           $userEntityList[$userData['id']] = new User($userData['id'], $userData['nom'], $userData['prenom']);
+           $userEntityList[$userData['id']] = new User($userData['id'], $userData['nom'], $userData['prenom'],$userData['age'],$userData['adresse']);
        }
        return $userEntityList;
    }
@@ -58,7 +58,7 @@ class UserRepository
            ->setParameter(0, $id);
        $statement = $queryBuilder->execute();
        $userData = $statement->fetchAll();
-       return new User($userData[0]['id'], $userData[0]['nom'], $userData[0]['prenom']);
+       return new User($userData[0]['id'], $userData[0]['nom'], $userData[0]['prenom'],$userData[0]['age'],$userData[0]['adresse']);
    }
     public function delete($id)
     {
@@ -97,10 +97,15 @@ class UserRepository
               array(
                 'nom' => ':nom',
                 'prenom' => ':prenom',
+                'age' => ':age',
+                'adresse' => ':adresse',
               )
           )
           ->setParameter(':nom', $parameters['nom'])
-          ->setParameter(':prenom', $parameters['prenom']);
+          ->setParameter(':prenom', $parameters['prenom'])
+          ->setParameter(':age', $parameters['age'])
+          ->setParameter(':adresse', $parameters['adresse']);
+          
         $statement = $queryBuilder->execute();
     }
 }

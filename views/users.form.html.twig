@@ -10,6 +10,13 @@
 
     <label for="name">Prénom : </label>
     <input type="text" name="prenom" value={{user.prenom}}  />
+
+    <label for="name">Age : </label>
+    <input type="text" name="age" value={{user.age}}  />
+
+    <label for="name">Adresse : </label>
+    <input type="text" name="adresse" value={{user.adresse}}  />
+    
     {% else %}
 <form method="post" name="formulaire" action="{{ url('users.save') }}">
     <label for="name">Nom : </label>
@@ -17,6 +24,14 @@
 
     <label for="name">Prénom : </label>
     <input type="text" name="prenom" />
+
+     <label for="name">Age : </label>
+    <input type="text" name="age" />
+
+     <label for="name">Adresse : </label>
+    <input type="text" name="adresse" />
+
+
     {% endif %}
 
     <button type="submit">Envoyer</button>

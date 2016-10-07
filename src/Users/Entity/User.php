@@ -5,11 +5,15 @@ class User
     protected $id;
     protected $nom;
     protected $prenom;
-    public function __construct($id, $nom, $prenom)
+    protected $age;
+    protected $adresse;
+    public function __construct($id, $nom, $prenom,$age,$adresse)
     {
         $this->id = $id;
         $this->prenom = $prenom;
         $this->nom = $nom;
+        $this->age = $age;
+        $this->adresse = $adresse;
     }
     public function setId($id)
     {
@@ -23,6 +27,15 @@ class User
     {
         $this->prenom = $prenom;
     }
+    public function setAge($age)
+    {
+        $this->age = $age;
+    }
+    public function setAdresse($adresse)
+    {
+        $this->adresse = $adresse;
+    }
+
     public function getId()
     {
         return $this->id;
@@ -35,12 +48,23 @@ class User
     {
         return $this->nom;
     }
+     public function getAge()
+    {
+        return $this->age;
+    }
+    public function getAdresse()
+    {
+        return $this->adresse;
+    }
     public function toArray()
     {
         $array = array();
         $array['id'] = $this->id;
         $array['nom'] = $this->nom;
         $array['prenom'] = $this->prenom;
+        $array['age'] = $this->age;
+        $array['adresse'] = $this->adresse;
+
         return $array;
     }
 }
